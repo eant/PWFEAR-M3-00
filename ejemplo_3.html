@@ -29,8 +29,38 @@
 		<!-- Optional JavaScript -->
 		<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
 		<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
-		<script>
+		<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+		<script type="text/babel">
+			// Componente "Saludo"
 			
+			class Saludo extends React.Component {
+
+				verTipo(){
+					alert(`El saludo es de tipo ${this.props.tipo}`)
+				}
+
+				render(){
+					
+					console.log(this)
+
+					let msg = this.props.tipo == 1 ? "Hola" : "Adios"
+
+					return <h2 onClick={this.verTipo.bind(this)}>{msg} {this.props.nombre}</h2>
+
+				}
+
+			}
+			/////////////////////////////////////
+			
+			let app = [
+				<Saludo nombre="Lucho" tipo="0" key="A" />,
+				<Saludo nombre="Lara" tipo="1" key="B" />,
+				<Saludo nombre="Loro" tipo="1" key="C" />,
+				<Saludo nombre="Lala" tipo="0" key="D" />
+			]
+
+			ReactDOM.render(app, document.querySelector("#app") )
+
 		</script>
 	</body>
 </html>
